@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="请求报文和响应报文请求报文主要内容：  请求方法 get&#x2F;post 等，包含 url、http 协议 主机号 host 包含浏览器信息的用户代理 user-Agent  组成：  请求行 请求头 请求主体  响应报文主要内容：  http 协议，状态码 服务器 server 内容类型 Content-Type 如 text&#x2F;html，编码方式 charset 如 utf-8 返回的内容（可视）">
+    <meta name="description" content="请求报文和响应报文请求报文主要内容：  请求方法 get&#x2F;post 等，包含 url、http 协议 主机号 host Accept-Language&#x2F;Encoding 包含浏览器信息的用户代理 user-Agent  组成：  请求行：请求方式 method 、请求地址 url 和 HTTP 版本 请求头：浏览器信息 user-Agent、接受的语言格式 Accept-Language 和 想要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ajax 学习笔记">
 <meta property="og:url" content="http://example.com/2020/10/02/Ajax/index.html">
 <meta property="og:site_name" content="Luminous&#39; blog">
-<meta property="og:description" content="请求报文和响应报文请求报文主要内容：  请求方法 get&#x2F;post 等，包含 url、http 协议 主机号 host 包含浏览器信息的用户代理 user-Agent  组成：  请求行 请求头 请求主体  响应报文主要内容：  http 协议，状态码 服务器 server 内容类型 Content-Type 如 text&#x2F;html，编码方式 charset 如 utf-8 返回的内容（可视）">
+<meta property="og:description" content="请求报文和响应报文请求报文主要内容：  请求方法 get&#x2F;post 等，包含 url、http 协议 主机号 host Accept-Language&#x2F;Encoding 包含浏览器信息的用户代理 user-Agent  组成：  请求行：请求方式 method 、请求地址 url 和 HTTP 版本 请求头：浏览器信息 user-Agent、接受的语言格式 Accept-Language 和 想要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-02T07:08:47.000Z">
-<meta property="article:modified_time" content="2020-10-02T07:54:46.006Z">
+<meta property="article:modified_time" content="2020-10-02T10:26:57.229Z">
 <meta property="article:author" content="Lu Dan">
 <meta name="twitter:card" content="summary">
     
@@ -105,7 +105,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E5%92%8C%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">请求报文和响应报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="toc-number">1.1.</span> <span class="toc-text">请求报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.2.</span> <span class="toc-text">响应报文</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E5%92%8C%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">请求报文和响应报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="toc-number">1.1.</span> <span class="toc-text">请求报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.2.</span> <span class="toc-text">响应报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">HTTP 协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XMLHttpRequest-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">XMLHttpRequest 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%97%B6%E5%85%BC%E5%AE%B9%E5%A4%84%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">创建对象时兼容处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">使用回调函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E8%A1%8C"><span class="toc-number">2.3.</span> <span class="toc-text">请求行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">2.4.</span> <span class="toc-text">请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94"><span class="toc-number">2.5.</span> <span class="toc-text">服务器响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%B8%BB%E4%BD%93%E5%8F%91%E9%80%81"><span class="toc-number">2.6.</span> <span class="toc-text">请求主体发送</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -148,13 +148,14 @@
 <ul>
 <li>请求方法 get/post 等，包含 url、http 协议</li>
 <li>主机号 host</li>
+<li>Accept-Language/Encoding</li>
 <li>包含浏览器信息的用户代理 user-Agent</li>
 </ul>
 <p><strong>组成</strong>：</p>
 <ul>
-<li>请求行</li>
-<li>请求头</li>
-<li>请求主体</li>
+<li>请求行：请求方式 method 、请求地址 url 和 HTTP 版本</li>
+<li>请求头：浏览器信息 user-Agent、接受的语言格式 Accept-Language 和 想要发送给服务器的信息等</li>
+<li>请求主体：发送给服务器的数据（内容）</li>
 </ul>
 <h3 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h3><p><strong>主要内容</strong>：</p>
 <ul>
@@ -165,9 +166,97 @@
 </ul>
 <p><strong>组成</strong>：</p>
 <ul>
-<li>状态行</li>
-<li>响应头</li>
-<li>响应主体</li>
+<li>状态行：显示请求是否成功<ul>
+<li>常见请求状态码：<ol>
+<li>200 OK 成功</li>
+<li>301 请求对象永久转移</li>
+<li>304 被缓存</li>
+<li>403 Forbidden 被拒绝</li>
+<li>404 Not Found 页面不存在</li>
+<li>5XX 服务器出现问题</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>响应头：服务器的一些信息和服务器想要告诉浏览器的一些信息</li>
+<li>响应主体：正常用户看见的内容</li>
+</ul>
+<p><strong>被提问什么是请求报文和响应报文时该如何回答</strong></p>
+<ul>
+<li>什么是请求报文？<ul>
+<li>请求报文包括请求行、请求头和请求主体，主要包含请求的方法、浏览器的信息和发送的数据等信息</li>
+</ul>
+</li>
+<li>什么是响应报文？<ul>
+<li>响应报文包括状态行、响应头和相应主体，主要包含请求状态、服务器的一些信息和浏览器中可以直接看到的内容等信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-协议"><a href="#HTTP-协议" class="headerlink" title="HTTP 协议"></a>HTTP 协议</h3><p>使用请求报文和响应报文进行数据交互这种行为是通过 HTTP 协议来规定完成的</p>
+<h2 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h2><p>在页面不刷新跳转的情况下发送请求，需要创建异步对象来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建对象</span><br><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">&#x2F;&#x2F;使用回调函数，便于多个Ajax任务调用</span><br><span class="line">function myFunction()</span><br><span class="line">&#123;</span><br><span class="line">    loadXMLDoc(&quot;&#x2F;try&#x2F;ajax&#x2F;ajax_info.txt&quot;,function()</span><br><span class="line">    &#123;</span><br><span class="line">        if (xhr.readyState&#x3D;&#x3D;4 &amp;&amp; xhr.status&#x3D;&#x3D;200)</span><br><span class="line">        &#123;</span><br><span class="line">            document.querySelector(&quot;div&quot;).innerHTML &#x3D; this.responseText;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 请求行</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;xxx.php?key1&#x3D;value1&amp;key2&#x3D;value2&quot;,true);</span><br><span class="line">&#x2F;&#x2F; 请求头 键值对</span><br><span class="line">xhr.setRequestHeader(&quot;example&quot;, &quot;test&quot;);</span><br><span class="line">&#x2F;&#x2F; 请求主体 发送</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建对象时兼容处理"><a href="#创建对象时兼容处理" class="headerlink" title="创建对象时兼容处理"></a>创建对象时兼容处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var xhr;</span><br><span class="line">if (window.XMLHttpRequest)</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</span><br><span class="line">	xhr&#x3D;new XMLHttpRequest();</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F; IE6, IE5 浏览器执行代码</span><br><span class="line">	xhr&#x3D;new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用回调函数"><a href="#使用回调函数" class="headerlink" title="使用回调函数"></a>使用回调函数</h3><p><strong>onreadystatechange 事件</strong></p>
+<ul>
+<li>当请求被发送到服务器时，需要执行一些基于响应的任务</li>
+<li>readyState 属性存有 XMLHttpRequest 的状态信息，每当 readyState 改变时，就会触发 onreadystatechange 事件</li>
+</ul>
+<p><strong>readyState</strong><br>存有 XMLHttpRequest 的状态，从 0 到 4 发生变化。</p>
+<ul>
+<li>0: 请求未初始化</li>
+<li>1: 服务器连接已建立</li>
+<li>2: 请求已接收</li>
+<li>3: 请求处理中</li>
+<li>4: 请求已完成，且响应已就绪</li>
+</ul>
+<p><strong>status</strong><br>状态码，在之前响应报文中介绍过</p>
+<p><strong>当 readyState 等于 4 且状态码为 200 时，表示响应已就绪</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">    if (xhr.readyState&#x3D;&#x3D;4 &amp;&amp; xhr.status&#x3D;&#x3D;200)</span><br><span class="line">        &#123;</span><br><span class="line">            document.querySelector(&quot;div&quot;).innerHTML &#x3D; this.responseText;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当网页上存在多个 Ajax 任务时，应该为创建的 XMLHttpRequest 对象编写一个标准的函数，并为每个 Ajax 任务调用该函数<br>该函数调用应该包含 URL 以及发生 onreadystatechange 事件时执行的任务（每次调用可能不尽相同）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function myFunction()</span><br><span class="line">&#123;</span><br><span class="line">    loadXMLDoc(&quot;xxx.php&quot;,function()</span><br><span class="line">    &#123;</span><br><span class="line">        if (xhr.readyState&#x3D;&#x3D;4 &amp;&amp; xhr.status&#x3D;&#x3D;200)</span><br><span class="line">        &#123;</span><br><span class="line">            document.querySelector(&quot;div&quot;).innerHTML &#x3D; this.responseText;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><p><strong>方法</strong>：open(method,url,async);</p>
+<ul>
+<li><p>async 默认 true，异步，false 为同步，用于 Ajax 时必须设置异步，同步不常用</p>
+</li>
+<li><p>get</p>
+<ul>
+<li>请求时数据时拼接在 url 中的</li>
+<li>xxx.php?key1=value1&amp;key2=value2</li>
+</ul>
+</li>
+<li><p>post</p>
+<ul>
+<li>请求时数据写在发送请求时的 send(string) 函数中</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><ul>
+<li><p>get</p>
+<ul>
+<li>setRequestHeader() 设置请求头操作可以省略</li>
+</ul>
+</li>
+<li><p>post</p>
+<ul>
+<li>必须要用 setRequestHeader() 来设置 HTTP 头，关于 HTTP 头的设置内容之后再深入学习</li>
+</ul>
+</li>
+</ul>
+<h3 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h3><p>需要获得来自服务器的响应，可以用 XMLHttpRequest 对象的 responseText 或 responseXML 属性获取返回的数据。可以操作 DOM 元素来修改页面内容 innerHTML，将返回的数据 responseText 赋给 innerHTML 使得用户能看见请求返回的数据。如果后端文件出现问题，还可以用这个方法打印错误提示。</p>
+<h3 id="请求主体发送"><a href="#请求主体发送" class="headerlink" title="请求主体发送"></a>请求主体发送</h3><p><strong>方法</strong>：send();</p>
+<ul>
+<li>get<ul>
+<li>不需要设置什么东西，直接发送即可</li>
+</ul>
+</li>
+<li>post<ul>
+<li>可以将需要发送的数据写在参数中，如 send(“key1=value1&amp;key2=value2”)</li>
+</ul>
+</li>
 </ul>
 
   </div>
@@ -194,7 +283,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E5%92%8C%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">请求报文和响应报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="toc-number">1.1.</span> <span class="toc-text">请求报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.2.</span> <span class="toc-text">响应报文</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E5%92%8C%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">请求报文和响应报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="toc-number">1.1.</span> <span class="toc-text">请求报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">1.2.</span> <span class="toc-text">响应报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">HTTP 协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XMLHttpRequest-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">XMLHttpRequest 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%97%B6%E5%85%BC%E5%AE%B9%E5%A4%84%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">创建对象时兼容处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">使用回调函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E8%A1%8C"><span class="toc-number">2.3.</span> <span class="toc-text">请求行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">2.4.</span> <span class="toc-text">请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94"><span class="toc-number">2.5.</span> <span class="toc-text">服务器响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%B8%BB%E4%BD%93%E5%8F%91%E9%80%81"><span class="toc-number">2.6.</span> <span class="toc-text">请求主体发送</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
